@@ -1,0 +1,2 @@
+module CensusVillagesHelper
+end

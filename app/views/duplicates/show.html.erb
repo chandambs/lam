@@ -1,0 +1,12 @@
+<p>
+  <strong>Duplicate Village ID:</strong>
+  <%= @duplicate.duplicate_village_id %>
+</p>
+
+<p>
+  <strong>Duplicate Type:</strong>
+  <%= @duplicate.duplicate_type %>
+</p>
+
+<%= link_to 'Edit', edit_village_duplicate_path(@village, @duplicate) %> |
+<%= link_to 'Back to Duplicates', village_duplicates_path(@village) %>

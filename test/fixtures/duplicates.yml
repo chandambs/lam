@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  village: one
+  duplicate_village: one
+  duplicate_type: MyString
+
+two:
+  village: two
+  duplicate_village: two
+  duplicate_type: MyString

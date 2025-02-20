@@ -1,0 +1,46 @@
+<h1>New Village</h1>
+
+<%= form_with(model: @village, local: true) do |form| %>
+  <% if @village.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@village.errors.count, "error") %> prohibited this village from being saved:</h2>
+
+      <ul>
+        <% @village.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, :class => 'form-label' %>
+    <%= form.text_field :name, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :subdivision, :class => 'form-label' %>
+    <%= form.text_field :subdivision, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :district, :class => 'form-label' %>
+    <%= form.text_field :district, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :order_id, :class => 'form-label' %>
+    <%= form.select :order_id, Order.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :census_village_id, :class => 'form-label' %>
+    <%= form.select :census_village_id, CensusVillage.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
+  </div>
+  
+  <div class="actions">
+    <%= form.submit 'Add', :class => 'btn btn-primary' %>
+    <%= link_to 'Back', villages_path, :class => 'btn btn-outline-primary' %>
+  </div>
+<% end %>
+

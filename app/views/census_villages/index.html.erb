@@ -1,0 +1,48 @@
+<h1>Census Villages</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Village</th>
+            <th scope="col">Sub Division</th>
+            <th scope="col">District</th>
+            <th scope="col">Census Code</th>
+            <th scope="col"></th>
+        </tr>
+        <%= form_with url: census_villages_path, method: :get, local: true do |form| %>
+            <tr>
+                <th scope="col"><%= text_field_tag :name, params[:name], placeholder: "Filter by name" %></th>
+                <th scope="col"><%= text_field_tag :subdivision, params[:subdivision], placeholder: "Filter by subdivision" %></th>
+                <th scope="col"><%= text_field_tag :district, params[:district], placeholder: "Filter by district" %></th>
+                <th scope="col"><%= text_field_tag :code, params[:code], placeholder: "Filter by code" %></th>
+                <th scope="col"><%= submit_tag "Filter", :class => 'btn btn-primary' %></th> 
+            </tr>
+        <% end %>
+    </thead>
+    <tbody>
+    <% @census_villages.each do |census_village| %>
+        <tr>
+            <td><%= link_to census_village.name, edit_census_village_path(census_village) %></td>
+            <td><%= census_village.subdivision %></td>
+            <td><%= census_village.district %></td>
+            <td><%= census_village.code %></td>
+            <td></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= paginate @census_villages %>
+
+<%= form_with url: upload_census_villages_path, local: true, multipart: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :file, :class => 'form-label' %>
+      <%= form.file_field :file , :class => 'form-control'%>
+    </div>
+    <div class="actions">
+      <%= form.submit "Upload" %>
+    </div>
+  <% end %>
+
+<%= link_to 'Add New Census Village', new_census_village_path, :class => 'btn btn-primary' %>
+

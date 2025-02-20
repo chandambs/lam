@@ -1,0 +1,7 @@
+<p>
+  <strong>Census ID:</strong>
+  <%= @census_village.code %>
+</p>
+
+<%= link_to 'Edit', edit_village_census_village_path(@village, @census_village) %> |
+<%= link_to 'Back to Census Villages', village_census_villages_path(@village) %>

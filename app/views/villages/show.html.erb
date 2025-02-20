@@ -1,0 +1,41 @@
+
+<h1>Details of Village <%= @village.name %></h1>
+
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= @village.name %></dd>
+  <dt>Sub Division</dt>
+  <dd><%= @village.subdivision %></dd>
+  <dt>District</dt>
+  <dd><%= @village.district %></dd>
+
+  <%= link_to 'See duplicates', village_duplicates_path(@village), :class => 'btn btn-outline-primary' %>
+</dl>
+
+<h2>Possible duplicates</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Village</th>
+            <th scope="col">Sub Division</th>
+            <th scope="col">District</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @similar_villages.each do |similar_village| %>
+      <tr>
+          <td><%= link_to similar_village.name, village_path(similar_village) %></td>
+          <td><%= similar_village.subdivision %></td>
+          <td><%= similar_village.district %></td>
+          <td></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>  
+
+<%= link_to 'Edit', edit_village_path(@village), :class => 'btn btn-primary' %>
+<%= link_to 'Back', villages_path, :class => 'btn btn-outline-primary' %>
+
+
+

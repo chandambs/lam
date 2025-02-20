@@ -1,0 +1,31 @@
+<h1>New Duplicate for <%= @village.name %></h1>
+
+<%= form_with(model: [@village, @duplicate], local: true) do |form| %>
+  <% if @duplicate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@duplicate.errors.count, "error") %> prohibited this duplicate from being saved:</h2>
+
+      <ul>
+        <% @duplicate.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :duplicate_village_id, :class => 'form-label' %>
+    <%= form.select :duplicate_village_id, Village.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duplicate_type, :class => 'form-label' %>
+    <%= form.text_field :duplicate_type, :class => 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add', :class => 'btn btn-primary' %>
+    
+    <%= link_to 'Back to Duplicates', village_duplicates_path(@village), :class => 'btn btn-outline-primary' %>
+  </div>
+<% end %>

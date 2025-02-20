@@ -3,15 +3,19 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Order Details</th>
-            <th scope="col">Date of Order</th>
-            <th scope="col">Number of Villages in Order</th>
+            <th scope="col">Village</th>
+            <th scope="col">Sub Division</th>
+            <th scope="col">District</th>
+            <th scope="col">Order</th>
         </tr>
     </thead>
     <tbody>
     <% @duplicates.each do |duplicate| %>
       <tr>
-          <td><%= link_to "Duplicate Village ID: #{duplicate.duplicate_village_id}", [@village, duplicate] %> - Type: <%= duplicate.duplicate_type %></td>
+          <td><%= link_to duplicate.duplicate_village.name, [@village, duplicate] %></td>
+          <td><%= duplicate.duplicate_village.subdivision %></td>
+          <td><%= duplicate.duplicate_village.district %></td>
+          <td><%= duplicate.duplicate_village.order.name %></td>
       </tr>
     <% end %>
     </tbody>

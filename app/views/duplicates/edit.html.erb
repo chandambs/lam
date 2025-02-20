@@ -14,8 +14,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :duplicate_village_id %>
-    <%= form.text_field :duplicate_village_id %>
+    <%= form.label :duplicate_village_id, :class => 'form-label' %>
+    <%= form.select :duplicate_village_id, Village.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
   </div>
 
   <div class="field">

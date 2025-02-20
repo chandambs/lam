@@ -11,7 +11,7 @@ class DuplicatesController < ApplicationController
   
     def new
       @village = Village.find(params[:village_id])
-      @duplicate = @village.duplicates.build
+      @duplicate = @village.duplicates.build({ :duplicate_village_id => params[:duplicate_village_id]})
     end
   
     def create

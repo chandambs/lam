@@ -1,12 +1,11 @@
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<h1>Details of Order</h1>
 
-<p>
-  <strong>Date:</strong>
-  <%= @order.date %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= @order.name %></dd>
+  <dt>Date of Order</dt>
+  <dd><%= @order.date %></dd>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+  <%= link_to 'Edit', edit_order_path(@order), :class => 'btn btn-primary' %>
+  <%= link_to 'Back', orders_path, :class => 'btn btn-outline-primary' %>
+</dl>

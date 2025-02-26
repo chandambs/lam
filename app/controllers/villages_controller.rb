@@ -10,6 +10,7 @@ class VillagesController < ApplicationController
     def show
       @village = Village.find(params[:id])
       @similar_villages = Village.with_similar_name(@village)
+      @similar_census_villages = CensusVillage.with_similar_name(@village.name)
     end
   
     def new

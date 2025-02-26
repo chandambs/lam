@@ -14,18 +14,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, :class => 'form-label' %>
+    <%= form.text_field :name, :class => 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date %>
+    <%= form.label :date, :class => 'form-label' %>
+    <%= form.date_field :date, :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add order", :class => 'btn btn-primary' %>
+    <%= link_to 'Back', orders_path, :class => 'btn btn-outline-primary' %>
   </div>
 <% end %>
-
-<%= link_to 'Back', orders_path %>

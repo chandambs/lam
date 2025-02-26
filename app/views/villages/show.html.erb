@@ -12,27 +12,49 @@
   <%= link_to 'See duplicates', village_duplicates_path(@village), :class => 'btn btn-outline-primary' %>
 </dl>
 
+<h2>Possible Census Villages</h2>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th scope="col">Census Village</th>
+          <th scope="col">Sub Division</th>
+          <th scope="col">District</th>
+          <th scope="col">Code</th>
+      </tr>
+  </thead>
+  <tbody>
+  <% @similar_census_villages.each do |similar_census_village| %>
+    <tr>
+        <td><%= link_to similar_census_village.name, census_village_path(similar_census_village) %></td>
+        <td><%= similar_census_village.subdivision %></td>
+        <td><%= similar_census_village.district %></td>
+        <td><%= similar_census_village.code %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <h2>Possible duplicates</h2>
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Village</th>
-            <th scope="col">Sub Division</th>
-            <th scope="col">District</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-    <% @similar_villages.each do |similar_village| %>
+  <thead>
       <tr>
-          <td><%= link_to similar_village.name, village_path(similar_village) %></td>
-          <td><%= similar_village.subdivision %></td>
-          <td><%= similar_village.district %></td>
-          <td><%= link_to 'Add as duplicate', new_village_duplicate_path(@village, :duplicate_village_id => similar_village.id ), :class => 'btn btn-primary' %></td>
+          <th scope="col">Village</th>
+          <th scope="col">Sub Division</th>
+          <th scope="col">District</th>
+          <th scope="col"></th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>  
+  </thead>
+  <tbody>
+  <% @similar_villages.each do |similar_village| %>
+    <tr>
+        <td><%= link_to similar_village.name, village_path(similar_village) %></td>
+        <td><%= similar_village.subdivision %></td>
+        <td><%= similar_village.district %></td>
+        <td><%= link_to 'Add as duplicate', new_village_duplicate_path(@village, :duplicate_village_id => similar_village.id ), :class => 'btn btn-primary' %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>  
 
 <%= link_to 'Edit', edit_village_path(@village), :class => 'btn btn-primary' %>
 <%= link_to 'Back', villages_path, :class => 'btn btn-outline-primary' %>

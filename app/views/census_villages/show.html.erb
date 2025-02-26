@@ -1,7 +1,14 @@
-<p>
-  <strong>Census ID:</strong>
-  <%= @census_village.code %>
-</p>
 
-<%= link_to 'Edit', edit_village_census_village_path(@village, @census_village) %> |
-<%= link_to 'Back to Census Villages', village_census_villages_path(@village) %>
+<h1>Details of Census Village <%= @census_village.name %></h1>
+
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= @census_village.name %></dd>
+  <dt>Sub Division</dt>
+  <dd><%= @census_village.subdivision %></dd>
+  <dt>District</dt>
+  <dd><%= @census_village.district %></dd>
+  <dt>Code</dt>
+  <dd><%= @census_village.code %></dd>
+  <%= link_to 'Edit', edit_census_village_path(@census_village), :class => 'btn btn-outline-primary' %>
+</dl>

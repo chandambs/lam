@@ -8,6 +8,8 @@
   <dd><%= @village.subdivision %></dd>
   <dt>District</dt>
   <dd><%= @village.district %></dd>
+  <dt>Census Village</dt>
+  <dd><%= @village.census_village.nil? ? "Not assigned" : @village.census_village.name %></dd>
 
   <%= link_to 'See duplicates', village_duplicates_path(@village), :class => 'btn btn-outline-primary' %>
 </dl>
@@ -20,6 +22,7 @@
           <th scope="col">Sub Division</th>
           <th scope="col">District</th>
           <th scope="col">Code</th>
+          <th scope="col"></th>
       </tr>
   </thead>
   <tbody>
@@ -29,6 +32,7 @@
         <td><%= similar_census_village.subdivision %></td>
         <td><%= similar_census_village.district %></td>
         <td><%= similar_census_village.code %></td>
+        <td><%= link_to 'Add to Census Village', edit_village_path(@village, :census_village_id => similar_census_village.id ), :class => 'btn btn-primary' %></td>
     </tr>
   <% end %>
   </tbody>

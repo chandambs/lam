@@ -12,3 +12,22 @@
   <dd><%= @census_village.code %></dd>
   <%= link_to 'Edit', edit_census_village_path(@census_village), :class => 'btn btn-outline-primary' %>
 </dl>
+
+<h4>Villages mapped</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>    
+            <th scope="col">Order</th> 
+        </tr>
+    </thead>
+    <tbody>
+    <% @census_village.villages.each do |village| %>
+      <tr>
+          <td><%= village.name %></td>
+          <td><%= village.order.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>
+

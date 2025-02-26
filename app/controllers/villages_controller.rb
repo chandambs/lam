@@ -29,10 +29,16 @@ class VillagesController < ApplicationController
   
     def edit
       @village = Village.find(params[:id])
+      unless params[:census_village_id].nil?
+        @village.census_village = CensusVillage.find(params[:census_village_id])
+      end
+      
     end
   
     def update
       @village = Village.find(params[:id])
+
+      
       if @village.update(village_params)
         flash[:success] = "Village was successfully updated."
         redirect_to villages_path

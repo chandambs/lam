@@ -32,15 +32,7 @@
 
 <%= paginate @villages %>
 
-<%= form_with url: upload_villages_path, local: true, multipart: true do |form| %>
-    <div class="mb-3">
-      <%= form.label :file, :class => 'form-label' %>
-      <%= form.file_field :file , :class => 'form-control'%>
-    </div>
-    <div class="actions">
-      <%= form.submit "Upload" %>
-    </div>
-  <% end %>
-
-<%= link_to 'Add New Village', new_village_path, :class => 'btn btn-primary' %>
+<div>
+  <%= link_to 'Add New Village', new_village_path, :class => 'btn btn-primary' %>
+</div>
 

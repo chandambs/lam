@@ -9,3 +9,42 @@
   <%= link_to 'Edit', edit_order_path(@order), :class => 'btn btn-primary' %>
   <%= link_to 'Back', orders_path, :class => 'btn btn-outline-primary' %>
 </dl>
+
+
+<h4 class="navbar">Villages</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Village</th>
+            <th scope="col">Sub Division</th>
+            <th scope="col">District</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody id="village-list">
+  <% @villages.each do |village| %>
+        <tr>
+            <td><%= link_to village.name, village_path(village) %></td>
+            <td><%= village.subdivision %></td>
+            <td><%= village.district %></td>
+            <td></td>
+            
+        </tr>
+  <% end %>
+    </tbody>
+</table>
+
+<%= paginate @villages %>
+
+<%= form_with url: upload_villages_path, local: true, multipart: true do |form| %>
+  <div class="mb-3">
+    <span>Upload a csv file having columns name, subdivision and district</span>
+    <%= form.label :file, :class => 'form-label' %>
+    <%= form.hidden_field :order_id, :value => @order.id %>
+    <%= form.file_field :file , :class => 'form-control'%>
+  </div>
+  <div class="actions">
+    <%= form.submit "Upload" %>
+  </div>
+<% end %>

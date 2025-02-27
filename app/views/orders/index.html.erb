@@ -13,7 +13,7 @@
     <% @orders.each do |order| %>
       <tr>
           <td><%= order.id %></td>
-          <td><%= link_to order.name, edit_order_path(order) %></td>
+          <td><%= link_to order.name, order_path(order) %></td>
           <td><%= order.date %></td>
           <td><%= order.villages.count %></td>
       </tr>

@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   
     def show
       @order = Order.find(params[:id])
+      @villages = @order.villages.order(:district, :subdivision, :name).page params[:page]
     end
   
     def new

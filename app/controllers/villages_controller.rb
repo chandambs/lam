@@ -49,11 +49,13 @@ class VillagesController < ApplicationController
 
     def upload
       file = params[:file]
-  
+      order = nil
+      unless params['order_id'].nil? 
+        order = Order.find(params['order_id'])
+      end
+
       if file
         CSV.foreach(file.path, headers: true) do |row|
-          order = Order.find(row['order_id'])
-
           Village.create!(
             name: row['name'],
             subdivision: row['subdivision'],
@@ -66,8 +68,8 @@ class VillagesController < ApplicationController
       else
         flash[:error] = "Please upload a valid CSV file."
       end
-  
-      redirect_to villages_path
+      
+      redirect_to order_path(order)
     end
   
     def destroy

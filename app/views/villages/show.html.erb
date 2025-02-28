@@ -10,7 +10,10 @@
   <dd><%= @village.district %></dd>
   <dt>Census Village</dt>
   <dd><%= @village.census_village.nil? ? "Not assigned" : @village.census_village.name %></dd>
-
+  <dt>Remarks</dt>
+  <dd><%= @village.remarks %></dd>
+    <dt>Is Hamlet</dt>
+  <dd><%= @village.hamlet %></dd>
   <%= link_to 'See duplicates', village_duplicates_path(@village), :class => 'btn btn-outline-primary' %>
 </dl>
 

@@ -38,6 +38,16 @@
     <%= form.select :census_village_id, CensusVillage.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :remarks, :class => 'form-label' %>
+    <%= form.text_area :remarks, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :hamlet, :class => 'form-label' %>
+    <%= form.checkbox :hamlet, :class => 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= form.submit 'Save', :class => 'btn btn-primary' %>
     <%= link_to 'Back', villages_path, :class => 'btn btn-outline-primary' %>

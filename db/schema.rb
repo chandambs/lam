@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_19_065048) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_104923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -78,6 +78,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_065048) do
     t.bigint "census_village_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "remarks"
+    t.boolean "hamlet"
     t.index ["census_village_id"], name: "index_villages_on_census_village_id"
     t.index ["order_id"], name: "index_villages_on_order_id"
   end

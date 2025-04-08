@@ -31,3 +31,24 @@
     </tbody>
 </table>
 
+<h4>Similar villages</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>    
+            <th scope="col">Sub Division</th> 
+            <th scope="col">District</th> 
+            <th scope="col">Order</th> 
+        </tr>
+    </thead>
+    <tbody>
+    <% @similar_villages.each do |village| %>
+      <tr>
+          <td><%= village.name %></td>
+          <td><%= village.subdivision %></td>
+          <td><%= village.district %></td>
+          <td><%= village.order.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

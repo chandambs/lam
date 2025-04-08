@@ -5,11 +5,11 @@ class Village < ApplicationRecord
   has_many :duplicates
   has_many :duplicate_villages, through: :duplicates, source: :duplicate_village
 
-  scope :with_similar_name, ->(village) {
-    select("villages.*, similarity(name, '#{sanitize_sql(village.name)}') AS similarity_score")
-      .where("similarity(name, ?) > 0.25 and id != ?", village.name, village.id)
+  scope :with_similar_name, ->(name, id) {
+    select("villages.*, similarity(name, '#{sanitize_sql(name)}') AS similarity_score")
+      .where("similarity(name, ?) > 0.25 and id != ?", name, id)
       .order("similarity_score DESC")
   }
- 
+
 end
 

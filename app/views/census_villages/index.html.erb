@@ -22,7 +22,7 @@
     <tbody>
     <% @census_villages.each do |census_village| %>
         <tr>
-            <td><%= link_to census_village.name, edit_census_village_path(census_village) %></td>
+            <td><%= link_to census_village.name, census_village_path(census_village) %></td>
             <td><%= census_village.subdivision %></td>
             <td><%= census_village.district %></td>
             <td><%= census_village.code %></td>

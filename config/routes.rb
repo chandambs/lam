@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :census_villages do
     collection { post :upload }
   end 
-  resources :orders
+  resources :orders do
+    collection { post :compare }
+  end
 
 end

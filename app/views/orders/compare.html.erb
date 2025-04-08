@@ -1,0 +1,41 @@
+<h1>Details of Order</h1>
+
+
+<dl class="dl-horizontal">
+  <dt>Order 1</dt>
+  <dd><%= @order1.name %></dd>
+  <dt>Order 2</dt>
+  <dd><%= @order2.name %></dd>
+</dl>
+
+<h4>Possible duplicate villages of order2 in order 1</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Main Village</th>    
+            <th scope="col">Subdivision</th>
+            <th scope="col">Possible Duplicate</th> 
+            <th scope="col">Possible Duplicate 2</th> 
+            <th scope="col">Possible Duplicate 3</th> 
+        </tr>
+    </thead>
+    <tbody>
+    <% @order1.villages.each do |village| %>
+      <tr>
+          <td><%= village.name %></td>
+          <td><%= village.subdivision %></td>
+          <% poss_dupes = 0 %>
+          <% dupe_villages = Village.with_similar_name(village.name, village.id).where(order_id: @order2.id).limit(3) %>
+          <% dupe_villages.each do |dupe_village| %>
+            
+            <td><%= dupe_village.name %></td>
+            <% poss_dupes += 1%>
+          <% end %>
+          <% while poss_dupes < 3 %>
+            <% poss_dupes += 1 %>
+            <td></td>
+          <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

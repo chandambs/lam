@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
     def index
       @orders = Order.all
+      @orders = @orders.page params[:page]
     end
   
     def show
@@ -10,6 +11,11 @@ class OrdersController < ApplicationController
   
     def new
       @order = Order.new
+    end
+
+    def compare
+      @order1 = Order.find(params[:order1_id])
+      @order2 = Order.find(params[:order2_id])
     end
   
     def create

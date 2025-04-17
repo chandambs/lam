@@ -6,6 +6,8 @@
             <th scope="col">Village</th>
             <th scope="col">Sub Division</th>
             <th scope="col">District</th>
+            <th scope="col">Present Sub Division</th>
+            <th scope="col">Present District</th>
             <th scope="col"></th>
         </tr>
         <%= form_with url: villages_path, method: :get, local: true do |form| %>
@@ -13,6 +15,8 @@
             <th scope="col"><%= text_field_tag :name, params[:name], placeholder: "Filter by name" %></th>
             <th scope="col"><%= text_field_tag :subdivision, params[:subdivision], placeholder: "Filter by subdivision" %></th>
             <th scope="col"><%= text_field_tag :district, params[:district], placeholder: "Filter by district" %></th>
+            <th scope="col"><%= text_field_tag :subdivision_present, params[:subdivision_present], placeholder: "Filter by present subdivision" %></th>
+            <th scope="col"><%= text_field_tag :district_present, params[:district_present], placeholder: "Filter by present district" %></th>
             <th scope="col"><%= submit_tag "Filter", :class => 'btn btn-primary' %></th> 
         </tr>
         <% end %>

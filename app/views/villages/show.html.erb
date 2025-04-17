@@ -48,6 +48,8 @@
           <th scope="col">Village</th>
           <th scope="col">Sub Division</th>
           <th scope="col">District</th>
+          <th scope="col">Present Sub Division</th>
+          <th scope="col">Present District</th>
           <th scope="col"></th>
       </tr>
   </thead>
@@ -57,7 +59,11 @@
         <td><%= link_to similar_village.name, village_path(similar_village) %></td>
         <td><%= similar_village.subdivision %></td>
         <td><%= similar_village.district %></td>
+        <td><%= similar_village.subdivision_present %></td>
+        <td><%= similar_village.district_present %></td>
+        
         <td><%= link_to 'Add as duplicate', new_village_duplicate_path(@village, :duplicate_village_id => similar_village.id ), :class => 'btn btn-primary' %></td>
+
     </tr>
   <% end %>
   </tbody>

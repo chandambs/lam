@@ -29,6 +29,16 @@
   </div>
 
   <div class="mb-3">
+    <%= form.label :subdivision_present, :class => 'form-label' %>
+    <%= form.text_field :subdivision_present, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :district_present, :class => 'form-label' %>
+    <%= form.text_field :district_present, :class => 'form-control' %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :order_id, :class => 'form-label' %>
     <%= form.select :order_id, Order.all.collect { |o| [o.name, o.id] }, { include_blank: true }, :class => 'form-control' %>
   </div>

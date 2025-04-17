@@ -60,6 +60,8 @@ class VillagesController < ApplicationController
             name: row['name'],
             subdivision: row['subdivision'],
             district: row['district'],
+            subdivision_present: row['subdivision_present'],
+            district_present: row['district_present'],
             order: order
           )
         end
@@ -81,7 +83,7 @@ class VillagesController < ApplicationController
     private
   
     def village_params
-      params.require(:village).permit(:name, :subdivision, :district, :order_id, :census_village_id, :remarks, :hamlet)
+      params.require(:village).permit(:name, :subdivision, :district, :subdivision_present, :district_present, :order_id, :census_village_id, :remarks, :hamlet)
     end
   end
   

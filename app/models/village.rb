@@ -7,7 +7,7 @@ class Village < ApplicationRecord
 
   scope :with_similar_name, ->(name, id) {
     select("villages.*, similarity(name, '#{sanitize_sql(name)}') AS similarity_score")
-      .where("similarity(name, ?) > 0.25 and id != ?", name, id)
+      .where("similarity(name, ?) > 0.65 and id != ?", name, id)
       .order("similarity_score DESC")
   }
 

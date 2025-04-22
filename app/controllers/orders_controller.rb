@@ -16,8 +16,42 @@ class OrdersController < ApplicationController
     def compare
       @order1 = Order.find(params[:order1_id])
       @order2 = Order.find(params[:order2_id])
+
     end
-  
+
+    def report
+      @order1 = Order.find(params[:order1_id])
+      @order2 = Order.find(params[:order2_id])
+      
+      @matching_data = []
+      matched_village_order1 = []
+      CensusVillage.find_each do |census_village|
+        dupe_villages = Village.with_similar_name(census_village.name, 0).where(order_id: @order1.id).limit(1)
+        if dupe_villages.empty?
+          @matching_data << {
+            census_village: census_village.name,
+            matched_village_order1: nil
+          }
+        else
+          matched_village_order1 << dupe_villages[0].id
+          @matching_data << {
+            census_village: census_village.name,
+            matched_village_order1: dupe_villages[0].name
+          }
+        end
+      end
+
+      @order1.villages.where.not(id: matched_village_order1).find_each do |unmatched_village|
+        @matching_data << {
+          census_village: nil,
+          matched_village_order1: unmatched_village.name
+        }
+      end
+    end
+
+    def similar_villages
+    end
+
     def create
       @order = Order.new(order_params)
       if @order.save

@@ -1,0 +1,27 @@
+<h1>Details of Order</h1>
+
+
+<dl class="dl-horizontal">
+  <dt>Order 1</dt>
+  <dd><%= @order1.name %></dd>
+  <dt>Order 2</dt>
+  <dd><%= @order2.name %></dd>
+</dl>
+
+<h4>Possible duplicate villages of order2 in order 1</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">CensusVillage</th>    
+            <th scope="col">Order 1 Village</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @matching_data.each do |row| %>
+      <tr>
+          <td><%= row[:census_village] %></td>
+          <td><%= row[:matched_village_order1] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

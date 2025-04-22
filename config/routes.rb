@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end 
   resources :orders do
     collection { post :compare }
+    collection { post :report }
   end
 
 end

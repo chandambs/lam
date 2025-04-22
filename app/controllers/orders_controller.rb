@@ -65,6 +65,8 @@ class OrdersController < ApplicationController
         end
 
         @matching_data << {
+          subdivision: census_village.subdivision,
+          district: census_village.district,
           census_village: census_village.name,
           matched_village_order1: matched_village_order1,
           matched_village_order2: matched_village_order2,
@@ -99,6 +101,8 @@ class OrdersController < ApplicationController
         end
 
         @matching_data << {
+          subdivision: unmatched_village.subdivision,
+          district: unmatched_village.district,
           census_village: nil,
           matched_village_order1: unmatched_village.name,
           matched_village_order2: matched_village_order2,
@@ -125,6 +129,8 @@ class OrdersController < ApplicationController
         end
 
         @matching_data << {
+          subdivision: unmatched_village.subdivision,
+          district: unmatched_village.district,
           census_village: nil,
           matched_village_order1: nil,
           matched_village_order2: unmatched_village.name,
@@ -143,6 +149,8 @@ class OrdersController < ApplicationController
         end
 
         @matching_data << {
+          subdivision: unmatched_village.subdivision,
+          district: unmatched_village.district,
           census_village: nil,
           matched_village_order1: nil,
           matched_village_order2: nil,
@@ -153,12 +161,28 @@ class OrdersController < ApplicationController
 
       @order4.villages.where.not(id: matched_villages_order4).find_each do |unmatched_village|
         @matching_data << {
+          subdivision: unmatched_village.subdivision,
+          district: unmatched_village.district,
           census_village: nil,
           matched_village_order1: nil,
           matched_village_order2: nil,
           matched_village_order3: nil,
           matched_village_order4: unmatched_village.name
         }
+      end
+
+      respond_to do |format|
+        format.html
+        format.csv
+      end
+    end
+
+    def report_csv
+      CSV.generate do |csv|
+        csv << %w{ id created_at order_type order_price }
+        all.each do |order|
+          csv << [order.id, order.ctreated_at, order.order_type, order.order_price ]
+        end
       end
     end
 

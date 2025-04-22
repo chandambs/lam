@@ -1,0 +1,6 @@
+<%- headers = ['Subdivision', 'District', 'Census', 'Order 1', 'Order 2', 'Order 3', 'Order 4'] -%>
+<%= CSV.generate_line headers %>
+<%- @matching_data.each do |row| -%>
+  <%= CSV.generate_line([row[:subdivision], row[:district], row[:census_village], row[:matched_village_order1], row[:matched_village_order2], row[:matched_village_order3], row[:matched_village_order4]]) -%>
+<%- end -%>
+

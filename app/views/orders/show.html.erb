@@ -17,6 +17,8 @@
     <thead>
         <tr>
             <th scope="col">Village</th>
+            <th scope="col">Present Sub Division</th>
+            <th scope="col">Present District</th>
             <th scope="col">Sub Division</th>
             <th scope="col">District</th>
             <th scope="col"></th>
@@ -26,6 +28,8 @@
   <% @villages.each do |village| %>
         <tr>
             <td><%= link_to village.name, village_path(village) %></td>
+            <td><%= village.subdivision_present %></td>
+            <td><%= village.district_present %></td>
             <td><%= village.subdivision %></td>
             <td><%= village.district %></td>
             <td></td>

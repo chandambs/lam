@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     collection { post :report }
   end
 
+  root 'villages#index'
 end

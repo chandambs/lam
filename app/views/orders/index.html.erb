@@ -3,7 +3,6 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">ID</th>    
             <th scope="col">Order Details</th>
             <th scope="col">Date of Order</th>
             <th scope="col">Number of Villages in Order</th>
@@ -12,7 +11,6 @@
     <tbody>
     <% @orders.each do |order| %>
       <tr>
-          <td><%= order.id %></td>
           <td><%= link_to order.name, order_path(order) %></td>
           <td><%= order.date %></td>
           <td><%= order.villages.count %></td>

@@ -5,6 +5,8 @@
   <dd><%= @order.name %></dd>
   <dt>Date of Order</dt>
   <dd><%= @order.date %></dd>
+  <dt>Order ID</dt>
+  <dd><%= @order.id %></dd>
 
   <%= link_to 'Edit', edit_order_path(@order), :class => 'btn btn-primary' %>
   <%= link_to 'Back', orders_path, :class => 'btn btn-outline-primary' %>

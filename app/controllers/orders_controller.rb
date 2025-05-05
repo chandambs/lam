@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
     def index
       @orders_all = Order.all
-      @orders = @orders_all.page params[:page]
+      @orders = @orders_all.order(:date).page params[:page]
     end
   
     def show

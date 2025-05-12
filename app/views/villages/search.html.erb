@@ -1,0 +1,60 @@
+<h1 class="navbar">Search for Villages</h1>
+
+<%= form_with url: search_villages_path, method: :get, local: true do |form| %>
+  <div class="input-group mb-3">
+    <%= text_field_tag :name, params[:name], placeholder: "Village Name", class: "form-control" %>
+    <div class="input-group-append">
+      <%= submit_tag "Search", :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+<h2>Census Villages</h2>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th scope="col">Census Village</th>
+          <th scope="col">Sub Division</th>
+          <th scope="col">District</th>
+          <th scope="col">Code</th>
+          <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody>
+  <% @similar_census_villages.each do |similar_census_village| %>
+    <tr>
+        <td><%= link_to similar_census_village.name, census_village_path(similar_census_village) %></td>
+        <td><%= similar_census_village.subdivision %></td>
+        <td><%= similar_census_village.district %></td>
+        <td><%= similar_census_village.code %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Villages</h2>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th scope="col">Village</th>
+          <th scope="col">Sub Division</th>
+          <th scope="col">District</th>
+          <th scope="col">Order</th>
+      </tr>
+  </thead>
+  <tbody>
+  <% @similar_villages.each do |similar_village| %>
+    <tr>
+        <td><%= link_to similar_village.name, village_path(similar_village) %></td>
+        <td><%= similar_village.subdivision %></td>
+        <td><%= similar_village.district %></td>
+        <td><%= similar_village.order.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>  
+
+<div>
+  <%= link_to 'Add New Village', new_village_path, :class => 'btn btn-primary' %>
+</div>
+

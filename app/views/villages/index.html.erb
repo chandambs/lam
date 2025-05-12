@@ -8,7 +8,6 @@
             <th scope="col">Present District</th>
             <th scope="col">Sub Division</th>
             <th scope="col">District</th>
-            <th scope="col">Order</th>
             <th scope="col"></th>
         </tr>
         <%= form_with url: villages_path, method: :get, local: true do |form| %>
@@ -19,19 +18,17 @@
             <th scope="col"><%= text_field_tag :subdivision, params[:subdivision], placeholder: "Filter by subdivision" %></th>
             <th scope="col"><%= text_field_tag :district, params[:district], placeholder: "Filter by district" %></th>
             <th scope="col"><%= submit_tag "Filter", :class => 'btn btn-primary' %></th> 
-            <th scope="col"></th> 
         </tr>
         <% end %>
     </thead>
     <tbody id="village-list">
   <% @villages.each do |village| %>
         <tr>
-            <td><%= link_to village.name, village_path(village) %></td>
+            <td title="<%= village.order.name %>"><%= link_to village.name, village_path(village), title: village.order.name %></td>
             <td><%= village.subdivision_present %></td>
             <td><%= village.district_present %></td>
             <td><%= village.subdivision %></td>
             <td><%= village.district %></td>
-            <td><%= village.order.name %></td>
             <td></td>
             
         </tr>

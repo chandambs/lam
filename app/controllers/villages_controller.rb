@@ -4,7 +4,6 @@ class VillagesController < ApplicationController
       @villages = @villages.where("subdivision ILIKE ?", "%#{params[:subdivision]}%")
       @villages = @villages.where("district ILIKE ?", "%#{params[:district]}%")
       @villages = @villages.order(:district, :subdivision, :name).page params[:page]
-     
     end
   
     def show
@@ -13,6 +12,12 @@ class VillagesController < ApplicationController
       @similar_census_villages = CensusVillage.with_similar_name(@village.name)
     end
   
+    def search
+      @villageName = params[:name]
+      @similar_villages = Village.with_similar_name(@villageName, 0)
+      @similar_census_villages = CensusVillage.with_similar_name(@villageName)
+    end
+
     def new
       @village = Village.new
     end
@@ -37,7 +42,6 @@ class VillagesController < ApplicationController
   
     def update
       @village = Village.find(params[:id])
-
       
       if @village.update(village_params)
         flash[:success] = "Village was successfully updated."

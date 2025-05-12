@@ -42,6 +42,10 @@
               </li>
             </ul>
           </div>
+          <%= form_with url: villages_path, method: :get, local: true do |form| %>
+            <%= text_field_tag :name, params[:name], placeholder: "Village Name" %>
+            <th scope="col"><%= submit_tag "Search", :class => 'btn btn-primary' %></th> 
+          <% end %>
           <h5 class="navbar-brand my-2 my-md-0 mr-md-3">Land Resources Department</h5>
         </div>
       </nav>

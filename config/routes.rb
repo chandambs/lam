@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :villages do
+    collection { get :search }
     collection { post :upload }
     resources :duplicates
   end
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
     collection { post :report }
   end
 
-  root 'villages#index'
+  root 'villages#search'
 end

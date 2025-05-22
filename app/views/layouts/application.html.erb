@@ -42,7 +42,7 @@
               </li>
             </ul>
           </div>
-          <%= form_with url: villages_path, method: :get, local: true do |form| %>
+          <%= form_with url: search_villages_path, method: :get, local: true do |form| %>
             <%= text_field_tag :name, params[:name], placeholder: "Village Name" %>
             <th scope="col"><%= submit_tag "Search", :class => 'btn btn-primary' %></th> 
           <% end %>
